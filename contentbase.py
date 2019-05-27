@@ -58,11 +58,7 @@ def getWandBias(tfidf,n_users,rate_train):
     return Yhat
     # predicted scores
 
-def recomma(user,topN):  
-    rateTest = 'D:/danthanh/DoAnTotNghiep/datasets/ml-100k/ua.test'
-    baseFile = 'D:/danthanh/DoAnTotNghiep/datasets/ml-100k/ua.base'
-    itemFile = 'D:/danthanh/DoAnTotNghiep/datasets/ml-100k/u.item'
-    userFile='D:/danthanh/DoAnTotNghiep/datasets/ml-100k/u.user'
+def recommend_ContentBase(user,topN, baseFile, itemFile, userFile):  
     #
     n_users=getUser(userFile)
     rate_train=getUser_Item(baseFile)
@@ -73,5 +69,3 @@ def recomma(user,topN):
     #listObj= sorted(Yhat[user],reverse=True)[:topN]
     print('Predicted ratings:', listObj)
     return listObj
-
-recomma(1,10)

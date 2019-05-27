@@ -58,7 +58,7 @@ def Diversity(urm,listCatory,listR,loai):
                 s=s+ float(CalDist(urm,listCatory,i,j,loai))
     return s/(l*(l-1))
 
-def objectiveFunction(urm,user,R,listI,listRel,alpha,loai):
+def objectiveFunction(urm,listCatory,user,R,listI,listRel,alpha,loai):
     lenR =len(R);
     maxObj=0;
     iMax=1
@@ -71,7 +71,7 @@ def objectiveFunction(urm,user,R,listI,listRel,alpha,loai):
         if (lenR!=0):
             s=float(0)
             for j in R:
-                s=s+float(CalDist(urm,i,j,loai))
+                s=s+float(CalDist(urm,listCatory,i,j,loai))
             di=s/lenR
         obj=alpha*listRel[i] + (1-alpha)*di
         if(obj>maxObj):
@@ -93,10 +93,10 @@ def vectorRel(urm,listI,u):
             listRel[i]=float(urm[u,i])/ float(I.argmax())#tinh chi so phu hop
     return listRel;
 
-def IncreasingDiversity(urm,user,listI,listRel,topN,alpha,loai):
+def IncreasingDiversity(urm,listCatory,user,listI,listRel,topN,alpha,loai):
     R=[]
     while len(R)<topN:
-        i=objectiveFunction(urm,user,R,listI,listRel,alpha,loai)
+        i=objectiveFunction(urm,listCatory,user,R,listI,listRel,alpha,loai)
         R.append(i);
         #listI.pop(i);
     return R

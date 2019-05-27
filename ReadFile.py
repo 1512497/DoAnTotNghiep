@@ -9,7 +9,7 @@ def UserRatingMatrix(filename,MAX_UID,MAX_IID):
     f = open(filename, "r")
     
     for x in f:
-        t= x.split('\t')        
+        t= x.split('\t')
         urm[int(t[0]),int(t[1])]=int(t[2])
         
     return urm

@@ -32,7 +32,7 @@ def computeSVD(urm, K):
 
     return U, S, Vt	
 
-def MF(U, S, Vt, dsTest, moviesSeen,topN, MAX_UID, MAX_PID):
+def MF(U, S, Vt, dsTest, moviesSeen,topN,MAX_UID, MAX_PID):
 	rightTerm = S*Vt
 
 	estimatedRatings = np.zeros(shape=(MAX_UID, MAX_PID), dtype=np.float16)
@@ -42,7 +42,7 @@ def MF(U, S, Vt, dsTest, moviesSeen,topN, MAX_UID, MAX_PID):
 		#we convert the vector to dense format in order to get the indices of 
       #the movies with the best estimated ratings 
 		estimatedRatings[userTest, :] = prod.todense()
-		recom = (-estimatedRatings[userTest, :]).argsort()[:50]
+		recom = (-estimatedRatings[userTest, :]).argsort()
 		for item in recom:
 			if item not in moviesSeen[userTest]:
 				dsTest[userTest].append(item)
